@@ -1,0 +1,18 @@
+.container {
+  padding: 2rem;
+}
+.btn__container {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn__sign-out {
+  display: block;
+  padding: 0.5rem 4rem;
+  color: white;
+  font-weight: 900;
+  font-size: 1.8rem;
+  border: 1px solid transparent;
+  border-radius: 10rem;
+  background-color: blue;
+  cursor: pointer;
+}
