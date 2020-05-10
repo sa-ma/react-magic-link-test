@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
-import { logoutUser } from '../../services/magic';
-import './Dashboard.css';
+import Button from 'react-bootstrap/Button';
+import { UserContext } from '../context/UserContext';
+import { logoutUser } from '../services/magic';
 
 const Dashboard = () => {
   const { email } = useContext(UserContext);
@@ -16,13 +16,13 @@ const Dashboard = () => {
     }
   };
   return (
-    <div className="container">
-      <div className="btn__container">
-        <button className="btn__sign-out" onClick={handleLogOut}>
+    <div className="p-2">
+      <div className="d-flex justify-content-end">
+        <Button variant="primary" onClick={handleLogOut}>
           Sign Out
-        </button>
+        </Button>
       </div>
-      <h1 className="user">User: {email}</h1>
+      <h1 className="h1">User: {email}</h1>
     </div>
   );
 };

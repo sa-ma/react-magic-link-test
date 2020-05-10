@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 import { UserContext } from './context/UserContext';
 import { checkUser } from './services/magic';
 import Authenticate from './components/Authenticate';
@@ -25,10 +26,17 @@ const App = () => {
       }
     };
     validateUser();
-  }, []);
+  }, [user.isLoggedIn]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: '100vh' }}
+      >
+        <Spinner animation="border" />
+      </div>
+    );
   }
   return (
     <UserContext.Provider value={user}>

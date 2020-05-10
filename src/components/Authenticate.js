@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { loginUser } from '../../services/magic';
-import './Authenticate.css';
+import {
+  Button,
+  Form,
+  FormGroup,
+  FormLabel,
+  FormControl,
+} from 'react-bootstrap';
+import { loginUser } from '../services/magic';
 
 const Authenticate = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +20,7 @@ const Authenticate = () => {
     event.preventDefault();
     setLoading(true);
     if (!email) {
+      setLoading(false);
       setError('Email is Invalid');
       return;
     }
@@ -30,28 +37,30 @@ const Authenticate = () => {
     setEmail(event.target.value);
   };
   return (
-    <div className="magic-form">
-      <form onSubmit={handleSubmit} className="form">
-        <h1 className="form__title">React Magic Form</h1>
-        <div className="form__group">
-          <label htmlFor="email" className="form__label">
-            Enter Email Address
-          </label>
-          <input
+    <div className="w-50 p-5 mt-5 mx-auto">
+      <h1 className="h1 text-center">React Magic Form</h1>
+      <Form onSubmit={handleSubmit} className="p-2 my-5 mx-auto">
+        <FormGroup className="mt-3" controlId="formBasicEmail">
+          <FormLabel fontSize="sm">Enter Email Address</FormLabel>
+          <FormControl
             type="email"
             name="email"
-            className="form__input"
             id="email"
             value={email}
             onChange={handleChange}
-            required
+            placeholder="Email Address"
           />
-        </div>
-        <p className="form__error-message">{error}</p>
-        <button className="form__button">
+          <p className="text-danger text-small">{error}</p>
+        </FormGroup>
+        <Button
+          type="submit"
+          size="md"
+          className="d-block w-100"
+          variant="primary"
+        >
           {loading ? 'Loading...' : 'Send'}
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 };
