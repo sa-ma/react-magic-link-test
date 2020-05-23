@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap';
 import { loginUser } from '../services/magic';
 
-const Authenticate = () => {
+const Authenticate = ({ setStatus }) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState('');
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ const Authenticate = () => {
       return;
     }
     try {
-      await loginUser(email);
+      await loginUser(email, setStatus);
       setLoading(false);
       history.replace('/dashboard');
     } catch (error) {

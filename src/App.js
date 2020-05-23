@@ -43,7 +43,9 @@ const App = () => {
       <Router>
         {user.isLoggedIn && <Redirect to={{ pathname: '/dashboard' }} />}
         <Switch>
-          <Route exact path="/" component={Authenticate} />
+          <Route exact path="/">
+            <Authenticate setStatus={setUser} />
+          </Route>
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
